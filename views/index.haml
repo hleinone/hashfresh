@@ -1,0 +1,46 @@
+!!! XML UTF-8
+!!! 1.1
+%html{:xmlns => "http://www.w3.org/1999/xhtml", :version => "-//W3C//DTD XHTML 1.1//EN", "xml:lang" => "en"}
+  %head
+    %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
+    %title #HashFresh
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/page.css"}
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-16108207-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+  %body
+    %h1
+      %a#logo{:href => "/"} #HashFresh
+    %div#content
+      %form{:action => "/", :method => "post"}
+        %div
+          %label{:for => "hashtag"} Hashtag: #
+          %input#hashtag{:name => "hashtag", :type => "text", :value => ""}
+        %div
+          %label{:for => "amount"} Amount:
+          %input#amount{:name => "amount", :type => "text", :value => "10"}
+        %div
+          %input{:type => "submit", :value => "Show"}
+    %h2 What?
+    :markdown
+      A site for auto-refreshing the [Twitter](http://twitter.com) [hashtag](http://en.wikipedia.org/wiki/Hashtag#Hash_tags) for your event.
+    %h2 How?
+    :markdown
+      Just type in the hashtag and the amount of tweets you're willing to see at once on the form above and press Show. Or... type in your browser's location bar [http://hashfresh.heroku.com/twitter/YOUR_HASHTAG](http://hashfresh.heroku.com/twitter/hashtag).
+    %h2 Why?
+    :markdown
+      I went to a conference, where there was a screen displaying the [Twitter search page](http://twitter.com/#search?q=%23hashtag") for the conference's hashtag. The Twitter page contains too much unnecessary stuff and doesn't auto-refresh so I had to fix it.
+    %h2 Who?
+    :markdown
+      An independent software developer currently working through my own company [Javanto](http://javanto.com). See my [Google Profile](http://www.google.com/profiles/hleinone) for more details.
+    %div#footer
+      :markdown
+        © 2010 [Javanto](http://javanto.com).
+

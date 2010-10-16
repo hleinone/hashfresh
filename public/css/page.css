@@ -1,0 +1,136 @@
+body {
+	font-family: 'Lucida Grande','Lucida Sans Unicode',sans-serif;
+}
+
+p {
+	font-size: 0.8em;
+}
+
+h1 a#logo {
+	font-size: 0.8em;
+	font-weight: bold;
+	margin-left: 15px;
+	display: none;
+}
+
+h2 {
+	font-size: 0.8em;
+	margin: 15px 0 0 15px;
+}
+
+body {
+	background: #DEF;
+	margin: 0.5em 0 0 0;
+}
+
+body p {
+	margin: 0 0 15px 20px;
+}
+
+div#content {
+	min-height: 5em;
+}
+
+form {
+	text-align: right;
+	position: absolute;
+	left: 20px;
+}
+
+form div label {
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #333;
+}
+
+form div input {
+	margin: 0.1em;
+}
+
+form div input[type="text"] {
+	color: #333;
+	border: 0.1em solid #CCC;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+form div input[type="submit"] {
+	background: #ADF;
+	color: #444;
+	font-weight: bold;
+	border: 0.1em solid #CCC;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+ol {
+	list-style: none;
+	margin-right: 40px;
+}
+
+ol li {
+	background: #FFF;
+	margin: 0.5em;
+	border: 0.1em solid #CCC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	min-height: 60px;
+}
+
+ol li img {
+	margin: 0.3em;
+	height: 48px;
+	width: 48px;
+	border-color: transparent;
+	border-width: 0;
+	position: absolute;
+}
+
+ol li div.message {
+	margin: 0.3em;
+	margin-left: 60px;
+	line-height: 0.8em;
+	min-height: 58px;
+	position: relative;
+}
+
+ol li div.message a.author {
+	font-size: 0.9em;
+	color: #22B;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+ol li div.message p.status {
+	margin: 0;
+	margin-left: 0.5em;
+	display: inline;
+}
+
+ol li div.message p.status a {
+	color: #22B;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+ol li div.message abbr.timeago {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	right: 0;
+	font-size: 0.6em;
+	color: #777;
+}
+
+div#footer {
+	text-align: right;
+	margin-right: 5px;
+}
+
+div#footer p {
+	font-size: 0.5em;
+}
+
+.prototype {
+	display: none;
+}
