@@ -5,6 +5,10 @@
     %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
     %title #HashFresh
     %link{:rel => "stylesheet", :type => "text/css", :href => "/css/page.css"}
+    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"}
+    %script{:type => "text/javascript", :src => "/js/jquery.mousewheel.js"}
+    %script{:type => "text/javascript", :src => "/js/jquery.ui.core.js"}
+    %script{:type => "text/javascript", :src => "/js/jquery.ui.spinner.js"}
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-16108207-3']);
@@ -15,11 +19,20 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+    :javascript
+      $(document).ready(function() {
+        $("#amount").spinner();
+      });
   %body
     %h1
       %a#logo{:href => "/"} #HashFresh
     %div#content
       %form{:action => "/", :method => "post"}
+        %div
+          %input#twitter{:name => "services[]", :type => "checkbox", :value => "twitter"}
+          %label{:for => "twitter"} Twitter
+          %input#identica{:name => "services[]", :type => "checkbox", :value => "identica"}
+          %label{:for => "identica"} Identi.ca
         %div
           %label{:for => "hashtag"} Hashtag: #
           %input#hashtag{:name => "hashtag", :type => "text", :value => ""}

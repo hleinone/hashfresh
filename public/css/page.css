@@ -77,13 +77,26 @@ ol li {
 	min-height: 60px;
 }
 
-ol li img {
+ol li img.userThumbnail {
 	margin: 0.3em;
 	height: 48px;
 	width: 48px;
 	border-color: transparent;
 	border-width: 0;
 	position: absolute;
+}
+
+ol li a.service {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	right: 0;
+}
+ol li a.service img {
+	height: 10px;
+	width: 10px;
+	border-color: transparent;
+	border-width: 0;
 }
 
 ol li div.message {
@@ -117,7 +130,7 @@ ol li div.message abbr.timeago {
 	position: absolute;
 	bottom: 0;
 	margin: 0;
-	right: 0;
+	right: 15px;
 	font-size: 0.6em;
 	color: #777;
 }

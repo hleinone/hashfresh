@@ -1,0 +1,77 @@
+!!! XML UTF-8
+!!! 1.1
+%html{:xmlns => "http://www.w3.org/1999/xhtml", :version => "-//W3C//DTD XHTML 1.1//EN", "xml:lang" => "en"}
+  %head
+    %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
+    %title #{locals[:hashtag]} - #HashFresh
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/page.css"}
+    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"}
+    %script{:type => "text/javascript", :src => "http://timeago.yarp.com/jquery.timeago.js"}
+    - @services.each do |service|
+      %script{:type => "text/javascript", :src => "/js/#{service}.js"}
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-16108207-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    :javascript
+      $(document).ready(function() {
+        $('#warning').hide();
+        $('#list').data('prototype', $('li#messagePrototype').removeClass('prototype'));
+        $('li#messagePrototype').remove();
+        var services = #{@services};
+        for (var i in services) {
+          $[services[i]]('#{locals[:hashtag]}', #{locals[:amount]}, 0, addStatus);
+        }
+      });
+
+      function addStatus(message) {
+        if ($('#list').children().length == #{locals[:amount]} && message.timestamp.getTime() < $('#list > li:last-child abbr.timeago').data('timestamp').getTime())
+          return;
+        if ($('#list').children().length == #{locals[:amount]})
+          $('#list > li:last-child').remove();
+        var msg = $('#list').data('prototype').clone(true).attr('id', message.source + '_' + message.id);
+        msg.find('a.author').attr('href', message.author.url);
+        msg.find('img.userThumbnail').attr('src', message.author.thumbnail).attr('alt', message.author.username);
+        msg.find('img.serviceThumbnail').attr('src', '/img/' + message.source + '.png').attr('alt', message.source);
+        msg.find('a.username').text(message.author.username);
+        msg.find('p.status').html(message.status);
+        msg.find('abbr.timeago').text($.timeago(message.timestamp));
+        msg.find('abbr.timeago').data('timestamp', message.timestamp);
+        msg.prependTo('#list');
+
+        var mylist = $('#list');
+        var listitems = mylist.children('li').get();
+        listitems.sort(function(a, b) {
+          var compA = $(a).find('abbr.timeago').data('timestamp').getTime();
+          var compB = $(b).find('abbr.timeago').data('timestamp').getTime();
+          return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+        });
+        $.each(listitems, function(idx, itm) {
+          mylist.append(itm);
+        });
+      }
+  %body
+    %h1
+      %a#logo{:href => "/"} #HashFresh
+    %div#messages
+      %p#warning JavaScript has to be enabled.
+      %ol#list
+        %li#messagePrototype.prototype
+          %a.author{:href => "#"}
+            %img.userThumbnail{:src => "", :alt => ""}
+          %div.message
+            %a.author.username{:href => "#"}
+            %p.status
+            %abbr.timeago{:title => ""}
+            %a.service{:href => "#"}
+              %img.serviceThumbnail{:src => "", :alt => ""}
+    %div#footer
+      :markdown
+        © 2010 [Javanto](http://javanto.com).
+

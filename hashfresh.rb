@@ -13,19 +13,12 @@ get '/' do
 end
 
 post '/' do
-  redirect '/twitter/' + params[:hashtag] + '/' + params[:amount]
+  redirect '/' + params[:services] * '+' + '/' + params[:hashtag] + '/' + params[:amount]
 end
 
-get '/:service/:hashtag/?:amount?/?' do
-  begin
-    unless params[:amount]
-      haml params[:service].to_sym, :locals => {:hashtag => params[:hashtag], :amount => 10}
-    else
-      haml params[:service].to_sym, :locals => {:hashtag => params[:hashtag], :amount => params[:amount]}
-    end
-  rescue Errno::ENOENT
-    raise Sinatra::NotFound
-  end
+get '/:services/:hashtag/?:amount?/?' do |services, hashtag, amount|
+  @services = services.split
+  haml :hashfresh, :locals => {:hashtag => hashtag, :amount => (amount or 10)}
 end
 
 not_found do
