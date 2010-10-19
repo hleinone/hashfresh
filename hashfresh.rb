@@ -17,7 +17,7 @@ post '/' do
 end
 
 get '/:services/:hashtag/?:amount?/?' do |services, hashtag, amount|
-  @services = services.split(' ')
+  @services = services.split
   haml :hashfresh, :locals => {:hashtag => hashtag, :amount => (amount or 10)}
 end
 
