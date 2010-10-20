@@ -1,3 +1,3 @@
-require 'hashfresh'
+require './hashfresh'
 run Sinatra::Application
 
