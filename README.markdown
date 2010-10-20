@@ -1,7 +1,7 @@
 # #HashFresh
 
 ## What?
-An auto-refreshing [Twitter](http://twitter.com) [hashtag](http://en.wikipedia.org/wiki/Hashtag#Hash_tags) client.
+An auto-refreshing [Twitter](http://twitter.com) and/or [Identi.ca](http://identi.ca) [hashtag](http://en.wikipedia.org/wiki/Hashtag#Hash_tags) client.
 
 ## WTF?
 This source tree is for solutions running on [Heroku](http://heroku.com). Mama look, it's [live](http://hashfresh.heroku.com)!
